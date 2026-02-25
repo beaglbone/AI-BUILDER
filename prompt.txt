@@ -1,0 +1,5 @@
+Build a modern Indian stock market information website.
+Include home, indices, stocks, news, pricing, login, signup.
+Header and footer must be global and reusable.
+No trading features.
+Professional fintech UI.
