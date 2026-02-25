@@ -1,3 +1,10 @@
+CRITICAL OUTPUT RULES:
+- Respond with ONLY valid JSON
+- Do NOT include explanations
+- Do NOT include markdown
+- Do NOT include ```json
+- Output must start with { and end with }
+
 Build a modern Indian stock market information website.
 Include home, indices, stocks, news, pricing, login, signup.
 Header and footer must be global and reusable.
