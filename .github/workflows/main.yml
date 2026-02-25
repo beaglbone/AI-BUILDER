@@ -1,0 +1,38 @@
+name: Run AI Website Generator (DeepSeek)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    env:
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Run AI generator
+        run: |
+          python generator.py
+
+      - name: Commit generated output
+        run: |
+          git config user.name "ai-generator-bot"
+          git config user.email "ai-generator-bot@users.noreply.github.com"
+          git add output/
+          git commit -m "AI generated website" || echo "No changes to commit"
+          git push
